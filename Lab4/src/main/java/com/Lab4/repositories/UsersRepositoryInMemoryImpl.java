@@ -12,7 +12,7 @@ import java.util.Optional;
 public class UsersRepositoryInMemoryImpl implements UsersRepository
 {
     static {
-        User u = new User(AccountType.USER, "user", "qwe","user@gmail.com");
+        User u = new User(AccountType.REGISTERED, "user", "qwe","user@gmail.com");
         u.addTax(new JobIncome(10000));
         u.addTax(new PropertySaleIncome(5000));
         InMemoryStorage<User> storage = InMemoryStorage.getInstance();

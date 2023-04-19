@@ -36,7 +36,7 @@ public class ProfileTools
             session.setAttribute(ProfileTools.ACCOUNT_LIST_ATTRIBUTE_NAME,
                     ProfileTools.getUsersRepository().fetchAll());
 
-        } else if (Objects.equals(ProfileTools.whoIs(account), AccountType.USER))
+        } else if (Objects.equals(ProfileTools.whoIs(account), AccountType.REGISTERED))
         {
             session.setAttribute(ProfileTools.ACCOUNT_WHO_IS,
                     ProfileTools.whoIs(account));

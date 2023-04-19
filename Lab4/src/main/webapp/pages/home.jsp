@@ -89,7 +89,7 @@
     <button onclick="window.location.href='AllUsers'">All Users</button><br/><br/>
     <button onclick="window.location.href='indv'">Individual task</button><br/><br/>
 </c:if>
-<c:if test="${whoIs eq 'USER'}" >
+<c:if test="${whoIs eq 'REGISTERED'}" >
     You are logged in as User<br/>
     <form action="addincome" method="POST">
         <label>Income Type:</label>
