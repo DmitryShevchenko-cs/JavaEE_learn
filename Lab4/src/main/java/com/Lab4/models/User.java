@@ -1,7 +1,10 @@
 package com.Lab4.models;
+import com.Lab4.models.Taxes.Incomes.Income;
+import com.Lab4.models.Taxes.Taxes;
 import com.Lab4.profile.AccountType;
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.util.List;
 
 public class User implements HasId, Serializable {
     private static final long serialVersionUID = 1L;
@@ -12,6 +15,7 @@ public class User implements HasId, Serializable {
     private LocalDate _loginDate;
     private LocalDate _birthDate;
     private AccountType _role;
+    private final Taxes _taxes = new Taxes();;
 
     public User() {
     }  // required by java-bean components
@@ -153,4 +157,12 @@ public class User implements HasId, Serializable {
 
         return true;
     }
+
+    public void sortTaxList(){ _taxes.sortIncomesByTaxes(); }
+
+    public Taxes getTaxes(){ sortTaxList(); return _taxes; }
+
+    public void addTax(Income income){ _taxes.addIncome(income); }
+
+    public void deleteTax(Income income){ _taxes.delIncome(income); }
 }

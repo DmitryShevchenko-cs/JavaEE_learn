@@ -62,12 +62,17 @@
   <tr><th>Name</th>
     <th>Email</th>
     <th>Role</th>
-    <th>Last login date</th></tr>
+    <th>Last login date</th>
+    <th>Incomes and taxes</th>
+    <th>Total taxes</th>
+  </tr>
   <c:forEach items="${accounts}" var="user">
   <tr><td>${user.name}</td>
     <td>${user.email}</td>
     <td>${user.role}</td>
-    <td>${user.loginDate}</td></tr>
+    <td>${user.loginDate}</td>
+    <td>${user.getTaxes().toString()}</td>
+    <td>${user.getTaxes().calculateTaxes()}</td></tr>
   </c:forEach>
 </c:if>
 </body>

@@ -1,6 +1,8 @@
 package com.Lab4.repositories;
 
 import com.Lab4.mocks.InMemoryStorage;
+import com.Lab4.models.Taxes.Incomes.JobIncome;
+import com.Lab4.models.Taxes.Incomes.PropertySaleIncome;
 import com.Lab4.models.User;
 import com.Lab4.profile.AccountType;
 
@@ -10,8 +12,11 @@ import java.util.Optional;
 public class UsersRepositoryInMemoryImpl implements UsersRepository
 {
     static {
+        User u = new User(AccountType.USER, "user", "qwe","user@gmail.com");
+        u.addTax(new JobIncome(10000));
+        u.addTax(new PropertySaleIncome(5000));
         InMemoryStorage<User> storage = InMemoryStorage.getInstance();
-        storage.put(new User(AccountType.USER, "user", "qwe","user@gmail.com"));
+        storage.put(u);
         storage.put(new User(AccountType.ADMINISTRATOR, "admin", "qwe", "admin@gmail.com"));
         storage.put(new User(AccountType.GUEST, "moderator", "qwe", "guest@gmail.com"));
     }
