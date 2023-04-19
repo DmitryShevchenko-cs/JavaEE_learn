@@ -81,4 +81,22 @@
     </servlet-mapping>
 
 
+    <servlet>
+        <servlet-name>IncomeForm</servlet-name>
+        <jsp-file>/pages/home.jsp</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>IncomeForm</servlet-name>
+        <url-pattern>/income</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>AddIncome</servlet-name>
+        <servlet-class>com.Lab4.servlets.AddIncome</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>AddIncome</servlet-name>
+        <url-pattern>/addincome</url-pattern>
+    </servlet-mapping>
+
 </web-app>

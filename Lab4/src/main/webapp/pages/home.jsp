@@ -39,8 +39,24 @@
             color: white;
             text-decoration: none;
         }
-
-        input[type="submit"] {
+        .formSubmit{
+            background-color: #4CAF50;
+            border: none;
+            color: white;
+            padding: 12px 24px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+            border-radius: 4px;
+            box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.12), 0 1px 5px 0 rgba(0, 0, 0, 0.2);
+        }
+        .formSubmit:hover{
+            background-color: #3e8e41;
+        }
+        .submitLogout {
             background-color: red;
             border: none;
             color: white;
@@ -54,11 +70,14 @@
             border-radius: 4px;
             box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.12), 0 1px 5px 0 rgba(0, 0, 0, 0.2);
         }
-        input[type="submit"]:hover{
+        .submitLogout:hover{
             background-color: darkred;
         }
         *{
             color:white;
+        }
+        input[type="number"]{
+            color:black;
         }
     </style>
 </head>
@@ -72,7 +91,21 @@
 </c:if>
 <c:if test="${whoIs eq 'USER'}" >
     You are logged in as User<br/>
-    <button onclick="window.location.href='indv'">Individual task</button><br/><br/>
+    <form action="addincome" method="POST">
+        <label>Income Type:</label>
+        <input type="radio" id="salary" name="income" value="salary" checked>
+        <label for="salary">Job Income</label>
+        <input type="radio" id="royalties" name="income" value="Royalties">
+        <label for="royalties">Royalties</label>
+        <input type="radio" id="Property" name="income" value="Property">
+        <label for="Property">Property sale</label>
+        <br>
+        <label for="income-amount">Income Amount:</label>
+        <input type="number" id="income-amount" name="income-amount"><br><br>
+        <input class="formSubmit" type="submit" value="Submit">
+    </form>
+    <p>${account.getTaxes().toString()}
+    <p>${account.getTaxes().calculateTaxes()}
 </c:if>
 <c:if test="${whoIs eq 'GUEST'}" >
     You are logged in as guest<br/>
@@ -80,7 +113,7 @@
 
 <form action="logout" method="post">
     <input type="hidden" name="authAction" value="logout" >
-    <input type="submit" value="Logout" />
+    <input class="submitLogout" type="submit" value="Logout" />
 </form>
 </body>
 </html>

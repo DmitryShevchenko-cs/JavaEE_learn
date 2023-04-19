@@ -1,24 +1,24 @@
 package com.Lab4.models.Taxes.Incomes;
 
 public class RoyaltyIncome implements Income {
-    private double amount;
+    private double _income;
 
-    public RoyaltyIncome(double amount) {
-        this.amount = amount;
+    public RoyaltyIncome(double _income) {
+        this._income = _income;
     }
 
     @Override
     public double getincome() {
-        return amount;
+        return _income;
     }
 
     @Override
     public double calculateTax() {
-        return amount * 0.2;
+        return _income * 0.2;
     }
 
     @Override
     public int compareTo(Income o) {
-        return Double.compare(this.amount, o.getincome());
+        return Double.compare(this._income, o.getincome());
     }
 }

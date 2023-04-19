@@ -1,24 +1,24 @@
 package com.Lab4.models.Taxes.Incomes;
 
 public class PropertySaleIncome implements Income{
-    private double salePrice;
+    private double _income;
 
-    public PropertySaleIncome(double salePrice) {
-        this.salePrice = salePrice;
+    public PropertySaleIncome(double _income) {
+        this._income = _income;
     }
 
     @Override
     public double getincome() {
-        return salePrice;
+        return _income;
     }
 
     @Override
     public double calculateTax() {
-        return salePrice * 0.2;
+        return _income * 0.2;
     }
 
     @Override
     public int compareTo(Income o) {
-        return Double.compare(this.salePrice, o.getincome());
+        return Double.compare(this._income, o.getincome());
     }
 }

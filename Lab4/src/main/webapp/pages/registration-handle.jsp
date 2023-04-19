@@ -19,9 +19,10 @@
     </c:when>
     <c:otherwise>
         <%
-            ProfileTools.getUsersRepository().save(registeredUser);
+            ProfileTools. getUsersRepository().save(registeredUser);
             ProfileTools.doLogin(registeredUser, session);
             request.getServletContext()
+
                     .getRequestDispatcher("/pages/home.jsp")
                     .forward(request, response);
         %>

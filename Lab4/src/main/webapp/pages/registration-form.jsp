@@ -56,16 +56,17 @@
 <body>
 <h1>Register new user</h1>
 <form action="doregister" method="post">
-    <label for="name">Name:</label>
-    <input type="text" id="name" name="name">
-    <label for="email">Email:</label>
-    <input type="email" id="email" name="email" required>
-    <label for="password">Password:</label>
-    <input type="password" id="password" name="password" required>
+    <p><label for="name">Name</label>
+        <input type="text" id="name" name="loginName" /></p>
+    <p><label for="email">Email</label>
+        <input type="text" id="email" name="email" /></p>
+    <p><label for="password">Password</label>
+        <input type="password" id="password" name="password" /></p>
     <p><label for="admin">Admin</label>
         <input type="radio" name="role" value="ADMINISTRATOR" id="admin" />
         <label for="user">User</label>
         <input type="radio" name="role" value="REGISTERED" id="user" checked /></p>
     <input type="submit" value="Register" />
 </form>
+
 </body></html>

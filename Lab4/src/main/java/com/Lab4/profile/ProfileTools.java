@@ -11,7 +11,7 @@ import java.util.Objects;
 
 public class ProfileTools
 {
-    public static String SESSION_LOGGEDIN_ATTRIBUTE_NAME = "user";
+    public static String SESSION_LOGGEDIN_ATTRIBUTE_NAME = "REGISTERED";
 
     //public static String ACCOUNT_IS_ADMIN_ATTRIBUTE_NAME = "isAdmin";
 
@@ -40,6 +40,7 @@ public class ProfileTools
         {
             session.setAttribute(ProfileTools.ACCOUNT_WHO_IS,
                     ProfileTools.whoIs(account));
+            session.setAttribute("account", account);
         }
         else if (Objects.equals(ProfileTools.whoIs(account), AccountType.GUEST))
         {

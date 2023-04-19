@@ -1,24 +1,24 @@
 package com.Lab4.models.Taxes.Incomes;
 
 public class JobIncome implements Income {
-    private double salary;
+    private double _income;
 
-    public JobIncome(double salary) {
-        this.salary = salary;
+    public JobIncome(double _income) {
+        this._income = _income;
     }
 
     @Override
     public double getincome() {
-        return salary;
+        return _income;
     }
 
     @Override
     public double calculateTax() {
-        return salary * 0.13;
+        return _income * 0.13;
     }
 
     @Override
     public int compareTo(Income o) {
-        return Double.compare(this.salary, o.getincome());
+        return Double.compare(this._income, o.getincome());
     }
 }
