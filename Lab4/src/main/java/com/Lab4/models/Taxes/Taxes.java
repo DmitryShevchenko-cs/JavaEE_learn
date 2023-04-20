@@ -15,8 +15,7 @@ public class Taxes {
     public double calculateTaxes() {
         double totalTaxes = 0;
         for (Income income : incomes) {
-            totalTaxes += income.calculateTax();
-        }
+            totalTaxes += income.calculateTax();}
         return totalTaxes;
     }
 
