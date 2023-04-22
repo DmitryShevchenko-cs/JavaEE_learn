@@ -9,10 +9,9 @@ import com.Lab4.profile.AccountType;
 import java.util.List;
 import java.util.Optional;
 
-public class UsersRepositoryInMemoryImpl implements UsersRepository
-{
+public class UsersRepositoryInMemoryImpl implements UsersRepository {
     static {
-        User u = new User(AccountType.REGISTERED, "user", "qwe","user@gmail.com");
+        User u = new User(AccountType.REGISTERED, "user", "qwe", "user@gmail.com");
         u.addTax(new JobIncome(10000));
         u.addTax(new PropertySaleIncome(5000));
         InMemoryStorage<User> storage = InMemoryStorage.getInstance();
@@ -27,8 +26,7 @@ public class UsersRepositoryInMemoryImpl implements UsersRepository
     }
 
     @Override
-    public User findByName(final String name)
-    {
+    public User findByName(final String name) {
         final List<User> accounts = InMemoryStorage.getInstance().getAll();
 
         System.out.println("findByName -> fetchAll = " + accounts);
@@ -42,8 +40,7 @@ public class UsersRepositoryInMemoryImpl implements UsersRepository
     }
 
     @Override
-    public User findByEmail(final String email)
-    {
+    public User findByEmail(final String email) {
         final List<User> accounts = InMemoryStorage.getInstance().getAll();
         for (User acc : accounts) {
             if (email.equals(acc.getEmail()))
