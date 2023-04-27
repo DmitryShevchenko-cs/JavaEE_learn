@@ -1,5 +1,6 @@
-<%@ page import="com.Lab4.profile.AccountType" %>
-<%@ page import="com.Lab4.profile.ProfileTools" %>
+<%@ page import="com.Lab5.profile.AccountType" %>
+<%@ page import="com.Lab5.profile.ProfileTools" %>
+<%@ page import="javax.sql.DataSource" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML	4.01 Transitional//EN"
@@ -8,7 +9,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <title>Verifying Registration</title></head>
 <body>
-<jsp:useBean id="registeredUser" class="com.Lab4.models.User" scope="session"></jsp:useBean>
+<jsp:useBean id="registeredUser" class="com.Lab5.models.User" scope="session"></jsp:useBean>
 <jsp:setProperty property="*" name="registeredUser"/>
 <c:set var="userName" value="${registeredUser.name}"/>
 <c:set var="userEmail" value="${registeredUser.email}"/>
@@ -19,13 +20,16 @@
     </c:when>
     <c:otherwise>
         <%
+            DataSource ds = ProfileTools.getDataSource(ProfileTools.DATASOURCE_PROPERTIES_FILE);
 
-            ProfileTools. getUsersRepository().save(registeredUser);
-            ProfileTools.doLogin(registeredUser, session);
+            ProfileTools.getUsersRepository(ds).save(registeredUser);
+            ProfileTools.doLogin(registeredUser, session, ds);
+
             request.getServletContext()
                     .getRequestDispatcher("/pages/home.jsp")
                     .forward(request, response);
         %>
+
     </c:otherwise>
 </c:choose>
 </body></html>

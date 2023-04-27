@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ru">
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Home</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: gray;
+        }
+        h1 {
+            color: #333333;
+            text-align: center;
+            padding: 10px;
+        }
+        .button-container, h1-container {
+            text-align: center;
+        }
+        button {
+            background-color: #4CAF50;
+            border: none;
+            color: black;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 10px;
+            border-radius: 4px;
+            cursor: pointer;
+            box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.12), 0 1px 5px 0 rgba(0, 0, 0, 0.2);
+        }
+
+        button:hover {
+            background-color: #3e8e41;
+        }
+
+    </style>
+</head>
+<body>
+<div class="h1-container"><h1>Home page</h1></div>
+<div class="button-container">
+    <button onclick="window.location.href='login'">Sign In</button>
+    <button onclick="window.location.href='register'">Sign Up</button><br>
+    <button onclick="window.location.href='indv'">Individual task</button><br>
+</div>
+</body>
+</html>
