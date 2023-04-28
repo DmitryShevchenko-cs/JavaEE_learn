@@ -80,10 +80,6 @@ public class ProfileTools
             session.setAttribute(ProfileTools.ACCOUNT_LIST_ATTRIBUTE_NAME,
                     ProfileTools.getUsersRepository(ds).fetchAll());
 
-//            account.setLoginDate(ProfileTools.generateLoginDate());
-//            ProfileTools.getUsersRepository(ds).save(account);
-
-
         } else if (Objects.equals(ProfileTools.whoIs(account), AccountType.REGISTERED))
         {
             session.setAttribute(ProfileTools.ACCOUNT_WHO_IS,

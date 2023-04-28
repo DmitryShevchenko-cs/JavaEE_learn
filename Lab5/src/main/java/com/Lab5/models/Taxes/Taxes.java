@@ -26,7 +26,7 @@ public class Taxes {
     public String toString(){
         String str = "";
         for (var tax:incomes) {
-            str += tax.getClass().getSimpleName() + ": " + String.valueOf(tax.getincome()) + "    Tax:" + String.valueOf(tax.calculateTax()) + "<br/>";
+            str += tax.getClass().getSimpleName() + ": " + String.valueOf(tax.getincome()) + "    Tax:" + String.valueOf(tax.calculateTax()) + "\n";
         }
         return str;
     }
