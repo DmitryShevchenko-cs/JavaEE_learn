@@ -11,10 +11,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.sql.DataSource;
+import javax.xml.crypto.Data;
 import java.io.IOException;
 
 public class LoginController extends HttpServlet {
-
 
     public LoginController() {
         super();
@@ -47,14 +47,14 @@ public class LoginController extends HttpServlet {
         String authTypeParam = request.getParameter("authType");
         String password = request.getParameter("psw");
         String authValue = request.getParameter("loginValue");
-        Authenticator authenticator = ProfileTools.getAuthenticator(ProfileTools.getDataSource(ProfileTools.DATASOURCE_PROPERTIES_FILE));
+        Authenticator authenticator = ProfileTools.getAuthenticator(ProfileTools.getDataSource(getServletContext().getRealPath(ProfileTools.DATASOURCE_PROPERTIES_FILE)));
 
         final User account = authTypeParam.equals("email")
                 ? authenticator.authenticateByUserEmail(authValue, password)
                 : authenticator.authenticateByUserName(authValue, password);
 
         if (account != null) {
-            ProfileTools.doLogin(account, request.getSession(), ProfileTools.getDataSource(ProfileTools.DATASOURCE_PROPERTIES_FILE));
+            ProfileTools.doLogin(account, request.getSession(), ProfileTools.getDataSource(getServletContext().getRealPath(ProfileTools.DATASOURCE_PROPERTIES_FILE)));
             request.getServletContext()
                     .getRequestDispatcher("/pages/home.jsp")
                     .forward(request, response);

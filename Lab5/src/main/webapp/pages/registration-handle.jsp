@@ -20,7 +20,10 @@
     </c:when>
     <c:otherwise>
         <%
-            DataSource ds = ProfileTools.getDataSource(ProfileTools.DATASOURCE_PROPERTIES_FILE);
+            DataSource ds = ProfileTools.getDataSource(
+                    request.getServletContext()
+                            .getRealPath(ProfileTools.DATASOURCE_PROPERTIES_FILE));
+
 
             ProfileTools.getUsersRepository(ds).save(registeredUser);
             ProfileTools.doLogin(registeredUser, session, ds);

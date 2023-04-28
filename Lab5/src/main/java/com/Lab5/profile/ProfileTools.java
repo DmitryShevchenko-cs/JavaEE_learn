@@ -24,7 +24,7 @@ public class ProfileTools
     public static String ACCOUNT_WHO_IS = "whoIs";
     public static String ACCOUNT_LIST_ATTRIBUTE_NAME = "accounts";
 
-    public static String DATASOURCE_PROPERTIES_FILE = "C:\\Users\\DmitryPC\\Documents\\JavaProjects\\Lab5\\src\\main\\webapp\\WEB-INF\\classes\\db.properties";
+    public static String DATASOURCE_PROPERTIES_FILE = "WEB-INF/classes/db.properties";
 
 //    public static UsersRepository getUsersRepository() {
 //        return new UsersRepositoryInMemoryImpl();
