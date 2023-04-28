@@ -3,7 +3,6 @@ package com.Lab5.profile;
 import com.Lab5.Dao.UsersRepositoryJdbcImpl;
 import com.Lab5.models.User;
 import com.Lab5.repositories.UsersRepository;
-import com.Lab5.repositories.UsersRepositoryInMemoryImpl;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
 
 import javax.servlet.http.HttpServletRequest;
@@ -81,8 +80,8 @@ public class ProfileTools
             session.setAttribute(ProfileTools.ACCOUNT_LIST_ATTRIBUTE_NAME,
                     ProfileTools.getUsersRepository(ds).fetchAll());
 
-            account.setLoginDate(ProfileTools.generateLoginDate());
-            ProfileTools.getUsersRepository(ds).save(account);
+//            account.setLoginDate(ProfileTools.generateLoginDate());
+//            ProfileTools.getUsersRepository(ds).save(account);
 
 
         } else if (Objects.equals(ProfileTools.whoIs(account), AccountType.REGISTERED))
