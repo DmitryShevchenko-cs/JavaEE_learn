@@ -104,8 +104,7 @@
         <input type="number" id="income-amount" name="income-amount"><br><br>
         <input class="formSubmit" type="submit" value="Submit">
     </form>
-    <p>${account.getTaxes().toString()}
-    <p>${account.getTaxes().calculateTaxes()}
+    <p>${account.get_tax()}
 </c:if>
 <c:if test="${whoIs eq 'GUEST'}" >
     You are logged in as guest<br/>

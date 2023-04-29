@@ -81,15 +81,16 @@ public class UsersRepositoryJdbcImpl implements UsersRepository {
 
             String sql = model.getId() == null
                     ? "INSERT INTO " +
-                    "account(account_type_id, login_name, password, email, birth_date, login_date) " +
-                    "VALUES (?, ?, ?, ?, ?, ?)"
+                    "account(account_type_id, login_name, password, email, birth_date, login_date, taxes) " +
+                    "VALUES (?, ?, ?, ?, ?, ?, ?)"
                     : "UPDATE account SET " +
                     "account_type_id = ?, " +
                     "login_name = ?, " +
                     "password = ?, " +
                     "email = ?, " +
                     "birth_date = ?, " +
-                    "login_date = ? " +
+                    "login_date = ?, " +
+                    "taxes = ? " +
                     "WHERE account_id = ?";
 
             PreparedStatement ps = conn.prepareStatement(sql);
@@ -99,8 +100,9 @@ public class UsersRepositoryJdbcImpl implements UsersRepository {
             ps.setString(4, model.getEmail());
             ps.setDate(5, toDate(model.getBirthDate()));
             ps.setDate(6, toDate(model.getLoginDate()));
+            ps.setDouble(7, model.get_tax());
             if (model.getId() != null)
-                ps.setInt(7, model.getId());
+                ps.setInt(8, model.getId());
             ps.execute();
         }
         catch (SQLException e) {
@@ -148,7 +150,8 @@ public class UsersRepositoryJdbcImpl implements UsersRepository {
                     rs.getString("password"),
                     rs.getString("email"),
                     toLocalDate(rs.getDate("birth_date")),
-                    toLocalDate(rs.getDate("login_date"))
+                    toLocalDate(rs.getDate("login_date")),
+                    rs.getDouble("taxes")
             ));
         }
 

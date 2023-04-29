@@ -14,17 +14,21 @@ public class User implements HasId, Serializable {
     private LocalDate _loginDate;
     private LocalDate _birthDate;
     private AccountType _role;
+
+    private double _tax;
     private final Taxes _taxes = new Taxes();;
 
+
     public User() {
+        _tax = 0;
     }  // required by java-bean components
 
     public User(AccountType role, String name, String password, String email) {
-        this(null, role, name, password, email, null, null);
+        this(null, role, name, password, email, null, null, 0);
     }
 
     public User(Integer id, AccountType role, String name, String password, String email,
-                LocalDate birthDate, LocalDate loginDate) {
+                LocalDate birthDate, LocalDate loginDate, double taxes) {
         _id = id;
         _role = role;
         _name = name;
@@ -32,6 +36,7 @@ public class User implements HasId, Serializable {
         _email = email;
         _birthDate = birthDate;
         _loginDate = loginDate;
+        _tax = taxes;
     }
 
     public AccountType getRole() {
@@ -88,6 +93,14 @@ public class User implements HasId, Serializable {
 
     public void setId(Integer id) {
         _id = id;
+    }
+
+    public double get_tax() {
+        return _tax;
+    }
+
+    public void set_tax(double _tax) {
+        this._tax = _tax;
     }
 
     @Override
@@ -159,9 +172,7 @@ public class User implements HasId, Serializable {
 
     public void sortTaxList(){ _taxes.sortIncomesByTaxes(); }
 
-    public Taxes getTaxes(){ sortTaxList(); return _taxes; }
-
-    public void addTax(Income income){ _taxes.addIncome(income); }
+    public void addTax(Income income){ _taxes.addIncome(income); _tax += _taxes.calculateTaxes();}
 
     public void deleteTax(Income income){ _taxes.delIncome(income); }
 }

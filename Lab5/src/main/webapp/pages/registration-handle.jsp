@@ -24,6 +24,7 @@
                     request.getServletContext()
                             .getRealPath(ProfileTools.DATASOURCE_PROPERTIES_FILE));
 
+            ProfileTools.getUsersRepository(ds).save(registeredUser);
             ProfileTools.doLogin(registeredUser, session, ds);
 
             request.getServletContext()

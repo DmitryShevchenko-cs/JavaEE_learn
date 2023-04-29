@@ -4,6 +4,7 @@ import com.Lab5.models.Taxes.Incomes.JobIncome;
 import com.Lab5.models.Taxes.Incomes.PropertySaleIncome;
 import com.Lab5.models.Taxes.Incomes.RoyaltyIncome;
 import com.Lab5.models.User;
+import com.Lab5.profile.ProfileTools;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -33,6 +34,8 @@ public class AddIncome extends HttpServlet {
         } else if (type.equals("Property")) {
             us.addTax(new PropertySaleIncome(Double.parseDouble(inc)));
         }
+        ProfileTools.getUsersRepository(
+                ProfileTools.getDataSource(getServletContext().getRealPath(ProfileTools.DATASOURCE_PROPERTIES_FILE))).save(us);
         doGet(req, resp);
     }
 }

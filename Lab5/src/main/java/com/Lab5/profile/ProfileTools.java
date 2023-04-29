@@ -73,6 +73,7 @@ public class ProfileTools
     public static void doLogin(User account, HttpSession session, DataSource ds)
     {
         session.setAttribute(ProfileTools.SESSION_LOGGEDIN_ATTRIBUTE_NAME, account.getName());
+        account.setId(ProfileTools.getUsersRepository(ds).findByName(account.getName()).getId());
 
         if (Objects.equals(ProfileTools.whoIs(account), AccountType.ADMINISTRATOR)) {
             session.setAttribute(ProfileTools.ACCOUNT_WHO_IS,
@@ -96,6 +97,7 @@ public class ProfileTools
         session.setAttribute("failedLoginAttemptsCount", 0);
         session.removeAttribute("blockedDate");
         session.removeAttribute("blockedTime");
+
 
         account.setLoginDate(ProfileTools.generateLoginDate());
         ProfileTools.getUsersRepository(ds).save(account);
