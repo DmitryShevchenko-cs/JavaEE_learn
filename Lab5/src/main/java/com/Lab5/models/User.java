@@ -23,21 +23,26 @@ public class User implements HasId, Serializable {
         _tax = 0;
     }  // required by java-bean components
 
-    public User(AccountType role, String name, String password, String email) {
-        this(null, role, name, password, email, null, null, 0);
+    public User(Integer id) {
+        _id = id;
     }
 
-    public User(Integer id, AccountType role, String name, String password, String email,
-                LocalDate birthDate, LocalDate loginDate, double taxes) {
-        _id = id;
-        _role = role;
-        _name = name;
-        _password = password;
-        _email = email;
-        _birthDate = birthDate;
-        _loginDate = loginDate;
-        _tax = taxes;
-    }
+
+//    public User(AccountType role, String name, String password, String email) {
+//        this(null, role, name, password, email, null, null, 0);
+//    }
+//
+//    public User(Integer id, AccountType role, String name, String password, String email,
+//                LocalDate birthDate, LocalDate loginDate, double taxes) {
+//        _id = id;
+//        _role = role;
+//        _name = name;
+//        _password = password;
+//        _email = email;
+//        _birthDate = birthDate;
+//        _loginDate = loginDate;
+//        _tax = taxes;
+//    }
 
     public AccountType getRole() {
         return _role;
