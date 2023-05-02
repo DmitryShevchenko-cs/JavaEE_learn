@@ -3,6 +3,10 @@ package com.Lab6.servlets.filters;
 import com.Lab6.logger.LoggerFactory;
 import com.Lab6.logger.ILogger;
 import com.Lab6.profile.ProfileTools;
+import com.Lab6.servlets.middleware.InitLoginAttemptsMiddleware;
+import com.Lab6.servlets.middleware.IsBlockedUserMiddleware;
+import com.Lab6.servlets.middleware.IsPublicUriMiddleware;
+import com.Lab6.servlets.middleware.Middleware;
 import com.Lab6.servlets.utils.RequestTools;
 
 import javax.servlet.*;
@@ -37,39 +41,15 @@ public class SessionFilter implements Filter {
 
         HttpServletRequest request = (HttpServletRequest) rq;
         HttpServletResponse response = (HttpServletResponse) rs;
-        if (request.getSession().getAttribute("failedLoginAttemptsCount") == null)
-        {
-            request.getSession().setAttribute("failedLoginAttemptsCount", 0);
-        }
 
-        final String requestUri = request.getRequestURI();
-        final String relativeUri = requestUri.substring(request.getContextPath().length());
-
-        final boolean shouldBeIgnored = isIgnoredUrl(relativeUri);
-        if (RequestTools.isBlocked(request, response))
-        {
-            logger.debug("A user is blocked.");
-            RequestTools.redirectToBlockedPage(request, response);
-        }
-        else if (!shouldBeIgnored && !ProfileTools.isLoggedIn(request))
-        {
-            logger.error("A user typed an incorrect password.");
-            request.getRequestDispatcher("/pages/Index.html").forward(request, response);
-        }
-        else
-        {
+        Middleware middleware = new IsPublicUriMiddleware(getIgnoredUrlList());
+        middleware.linkWith(
+                new IsBlockedUserMiddleware().linkWith(
+                        new InitLoginAttemptsMiddleware()));
+        if (middleware.check(request, response)) {
             chain.doFilter(rq, rs);
         }
     }
-
-    private boolean isIgnoredUrl(String url)
-    {
-        for (String ignoredUrl : getIgnoredUrlList())
-            if (url.startsWith(ignoredUrl))
-                return true;
-        return false;
-    }
-
 
     public ArrayList<String> getIgnoredUrlList() {
         return ignoredUrlList;

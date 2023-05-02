@@ -83,7 +83,7 @@
 <h3><p><c:out value="${newtext}"/></p></h3>
 <br/>
 <div>
-    <button class="btn-back" onclick="window.location.href='/Lab5_war'">Назад</button>
+    <button class="btn-back" onclick="window.location.href='/Lab6_war'">Назад</button>
 </div>
 </body>
 </html>

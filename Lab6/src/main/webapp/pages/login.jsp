@@ -90,7 +90,7 @@
     <input type="submit" value="Submit">
 </form>
 <div>
-    <button onclick="window.location.href='/Lab5_war'">Welcome Page</button>
+    <button onclick="window.location.href='/Lab6_war'">Welcome Page</button>
 </div>
 </body>
 </html>

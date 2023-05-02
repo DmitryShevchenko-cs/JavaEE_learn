@@ -6,7 +6,7 @@
          http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
          version="3.1">
 
-    <display-name>Lab5</display-name>
+    <display-name>Lab6</display-name>
     <welcome-file-list>
         <welcome-file>/pages/Index.html</welcome-file>
     </welcome-file-list>
