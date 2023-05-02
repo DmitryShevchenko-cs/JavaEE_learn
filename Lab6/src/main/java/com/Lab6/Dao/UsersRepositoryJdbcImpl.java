@@ -1,5 +1,6 @@
 package com.Lab6.Dao;
 
+import com.Lab6.builders.UserBuilder;
 import com.Lab6.models.User;
 import com.Lab6.profile.AccountType;
 import com.Lab6.repositories.UsersRepository;
@@ -143,16 +144,25 @@ public class UsersRepositoryJdbcImpl implements UsersRepository {
         if (! _users.containsKey(id))
         {
             final String role = rs.getString("role");
-            _users.put(id, new User(
-                    id,
-                    role != null ? AccountType.valueOf(role) : AccountType.GUEST,
-                    rs.getString("login_name"),
-                    rs.getString("password"),
-                    rs.getString("email"),
-                    toLocalDate(rs.getDate("birth_date")),
-                    toLocalDate(rs.getDate("login_date")),
-                    rs.getDouble("taxes")
-            ));
+//            _users.put(id, new User(
+//                    id,
+//                    role != null ? AccountType.valueOf(role) : AccountType.GUEST,
+//                    rs.getString("login_name"),
+//                    rs.getString("password"),
+//                    rs.getString("email"),
+//                    toLocalDate(rs.getDate("birth_date")),
+//                    toLocalDate(rs.getDate("login_date")),
+//                    rs.getDouble("taxes")
+//            ));
+            _users.put(id, new UserBuilder(id)
+                    .setRole(role != null ? AccountType.valueOf(role) : AccountType.GUEST)
+                    .setName(rs.getString("login_name"))
+                    .setPassword(rs.getString("password"))
+                    .setEmail(rs.getString("email"))
+                    .setBirthDate(toLocalDate(rs.getDate("birth_date")))
+                    .setLoginDate(toLocalDate(rs.getDate("login_date")))
+                    .setTax(rs.getDouble("taxes"))
+                    .build());
         }
 
         return _users.get(id);
