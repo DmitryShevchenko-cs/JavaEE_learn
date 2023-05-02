@@ -1,5 +1,7 @@
 package com.Lab6.servlets.filters;
 
+import com.Lab6.logger.LoggerFactory;
+import com.Lab6.logger.ILogger;
 import com.Lab6.profile.ProfileTools;
 import com.Lab6.servlets.utils.RequestTools;
 
@@ -21,9 +23,18 @@ public class SessionFilter implements Filter {
             ignoredUrlList.add(token.nextToken());
         }
     }
+
+    public static ILogger createLogger() {
+        LoggerFactory factory = new LoggerFactory();
+        return factory.getLogger();
+    }
+
+
     public void doFilter(ServletRequest rq, ServletResponse rs, FilterChain chain)
             throws IOException, ServletException
     {
+        ILogger logger = createLogger();
+
         HttpServletRequest request = (HttpServletRequest) rq;
         HttpServletResponse response = (HttpServletResponse) rs;
         if (request.getSession().getAttribute("failedLoginAttemptsCount") == null)
@@ -37,10 +48,12 @@ public class SessionFilter implements Filter {
         final boolean shouldBeIgnored = isIgnoredUrl(relativeUri);
         if (RequestTools.isBlocked(request, response))
         {
+            logger.debug("A user is blocked.");
             RequestTools.redirectToBlockedPage(request, response);
         }
         else if (!shouldBeIgnored && !ProfileTools.isLoggedIn(request))
         {
+            logger.error("A user typed an incorrect password.");
             request.getRequestDispatcher("/pages/Index.html").forward(request, response);
         }
         else

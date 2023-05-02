@@ -1,8 +1,12 @@
 package com.Lab6.servlets;
+import com.Lab6.logger.ILogger;
 
+
+import com.Lab6.logger.LoggerFactory;
 import com.Lab6.models.User;
 import com.Lab6.profile.Authenticator;
 import com.Lab6.profile.ProfileTools;
+import com.Lab6.servlets.filters.SessionFilter;
 import com.Lab6.servlets.utils.RequestTools;
 
 import javax.servlet.ServletException;
@@ -39,9 +43,17 @@ public class LoginController extends HttpServlet {
         }
     }
 
+    private static ILogger createLogger() {
+        LoggerFactory factory = new LoggerFactory();
+        return factory.getLogger();
+    }
+
 
     private void login(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+
+        ILogger logger = createLogger();
+
         String authTypeParam = request.getParameter("authType");
         String password = request.getParameter("psw");
         String authValue = request.getParameter("loginValue");
@@ -56,14 +68,18 @@ public class LoginController extends HttpServlet {
         if (account != null) {
             ProfileTools.doLogin(account, request.getSession(),
                     ProfileTools.getDataSource(getServletContext().getRealPath(ProfileTools.DATASOURCE_PROPERTIES_FILE)));
+
+            logger.debug("A user has just logged in.");
+
             request.getServletContext()
                     .getRequestDispatcher("/pages/home.jsp")
                     .forward(request, response);
         } else {
             RequestTools.addLoginAttemptToSession(request, response);
-            if (RequestTools.isBlocked(request, response))
+            if (RequestTools.isBlocked(request, response)){
+                logger.error("A user is blocked.");
                 RequestTools.redirectToBlockedPage(request, response);
-            else {
+            }else {
                 request.getServletContext()
                         .getRequestDispatcher("/pages/login-error.jsp")
                         .forward(request, response);
