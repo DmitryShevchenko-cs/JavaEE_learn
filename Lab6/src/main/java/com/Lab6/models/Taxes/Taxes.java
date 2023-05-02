@@ -21,8 +21,6 @@ public class Taxes {
 
     public void sortIncomesByTaxes() { Collections.sort(incomes); }
 
-    public List<Income> TaxList(){ return incomes; }
-
     public String toString(){
         String str = "";
         for (var tax:incomes) {
