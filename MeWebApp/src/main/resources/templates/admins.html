@@ -2,15 +2,12 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Manage Users</title>
+    <title>Manage admins</title>
     <link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}"  />
 </head>
 <body>
 <div class="container-fluid text-center">
-    <div><h2>Manage Users</h2></div>
-    <div class="m-2">
-        <a class="h3" th:href="@{/admins/new}">Add New Admin</a>
-    </div>
+    <div><h2>Manage admins</h2></div>
     <div>
         <table class="table table-bordered">
             <thead class="thead-dark">
@@ -34,7 +31,10 @@
             </tbody>
         </table>
         <div class="m-2">
-            <a class="h5 text-danger" th:href="@{/static}">Back</a>
+            <a class="h4" th:href="@{/admins/new}">Add New Admin</a>
+        </div>
+        <div class="m-2">
+            <a class="h5 text-danger" th:href="@{/}">Back</a>
         </div>
     </div>
 </div>
