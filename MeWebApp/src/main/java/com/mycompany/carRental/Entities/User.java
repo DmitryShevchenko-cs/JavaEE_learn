@@ -34,6 +34,13 @@ public class User {
                 '}';
     }
 
+    public String getInfo(){
+        return name + " " +
+                surname + " " +
+                phoneNumber + " " +
+                email;
+    }
+
     public Integer getId() {
         return id;
     }

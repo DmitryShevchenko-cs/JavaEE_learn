@@ -41,6 +41,11 @@ public class CarModel {
                 ", car=" + car.toString() +
                 '}';
     }
+    public String getInfo(){
+        return car.getName() + " " +
+                car.getModel()  + " " +
+                Number;
+    }
 
     public Integer getId() {
         return id;
