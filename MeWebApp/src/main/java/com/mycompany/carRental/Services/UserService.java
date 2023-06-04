@@ -1,7 +1,8 @@
-package com.mycompany.mewebapp.Services;
+package com.mycompany.carRental.Services;
 
-import com.mycompany.mewebapp.Entities.User;
-import com.mycompany.mewebapp.Repositories.UserRepository;
+import com.mycompany.carRental.Entities.User;
+import com.mycompany.carRental.Exceptions.UserNotFoundException;
+import com.mycompany.carRental.Repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -28,10 +29,6 @@ public class UserService {
     }
 
     public void delete(Integer id) throws UserNotFoundException {
-        var count = repo.countById(id);
-        if(count == null || count == 0){
-            throw new UserNotFoundException("Could not find any user with ID" + id);
-        }
         repo.deleteById(id);
     }
 }

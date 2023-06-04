@@ -1,8 +1,8 @@
-package com.mycompany.mewebapp;
+package com.mycompany.carRental;
 
-import com.mycompany.mewebapp.Entities.User;
-import com.mycompany.mewebapp.Services.UserNotFoundException;
-import com.mycompany.mewebapp.Services.UserService;
+import com.mycompany.carRental.Entities.User;
+import com.mycompany.carRental.Exceptions.UserNotFoundException;
+import com.mycompany.carRental.Services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

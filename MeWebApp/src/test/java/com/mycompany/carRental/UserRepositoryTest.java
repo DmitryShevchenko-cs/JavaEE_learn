@@ -1,16 +1,13 @@
-package com.mycompany.mewebapp;
+package com.mycompany.carRental;
 
-import com.mycompany.mewebapp.Entities.User;
-import com.mycompany.mewebapp.Repositories.UserRepository;
+import com.mycompany.carRental.Entities.User;
+import com.mycompany.carRental.Repositories.UserRepository;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
-import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.test.annotation.Rollback;
-
-import java.util.TooManyListenersException;
 
 @DataJpaTest
 @AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
