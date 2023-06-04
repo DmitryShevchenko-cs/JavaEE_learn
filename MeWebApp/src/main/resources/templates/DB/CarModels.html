@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Manage car models</title>
+  <link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}"  />
+</head>
+<body>
+<div class="container-fluid text-center">
+  <div><h2>Manage car models</h2></div>
+  <div class="m-2">
+    <a class="h3" th:href="@{/CarModels/new}">Add New car model</a>
+  </div>
+  <div>
+    <table class="table table-bordered">
+      <thead class="thead-dark">
+      <tr>
+        <th>ID</th>
+        <th>Number</th>
+        <th>Color</th>
+        <th>Type</th>
+        <th>Places</th>
+        <th>Car</th>
+        <th></th>
+      </tr>
+      </thead>
+      <tbody>
+      <th:block th:each="carModel : ${listCarModels}">
+        <tr>
+          <td>[[${carModel.id}]]</td>
+          <td>[[${carModel.Number}]]</td>
+          <td>[[${carModel.Color}]]</td>
+          <td>[[${carModel.Type}]]</td>
+          <td>[[${carModel.Places}]]</td>
+          <td>[[${carModel.car.getNameAndModel()}]]</td>
+          <td>
+            <a class="h4 mr-3" th:href="@{'/CarModels/edit/' + ${carModel.id}}">Edit</a>
+            <a class="h4" th:href="@{'/CarModels/delete/' + ${carModel.id}}">Delete</a>
+          </td>
+        </tr>
+      </th:block>
+      </tbody>
+    </table>
+    <div class="m-2">
+      <a class="h5 text-danger" th:href="@{/static}">Back</a>
+    </div>
+  </div>
+</div>
+</body>
+</html>

@@ -1,8 +1,8 @@
-package com.mycompany.mewebapp.Repositories;
+package com.mycompany.carRental.Repositories;
 
-import com.mycompany.mewebapp.Entities.User;
+import com.mycompany.carRental.Entities.User;
 import org.springframework.data.repository.CrudRepository;
 
 public interface UserRepository extends CrudRepository<User, Integer> {
-    public Long countById(Integer id);
+
 }

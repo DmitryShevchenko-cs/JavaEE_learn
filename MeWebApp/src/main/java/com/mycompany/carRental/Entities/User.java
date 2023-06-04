@@ -1,6 +1,8 @@
-package com.mycompany.mewebapp.Entities;
+package com.mycompany.carRental.Entities;
 
 import jakarta.persistence.*;
+
+import java.util.List;
 
 @Entity
 @Table(name="users")
@@ -17,6 +19,9 @@ public class User {
     private String phoneNumber;
     @Column(nullable = false, unique = true, length = 45)
     private String email;
+
+    @OneToMany(mappedBy = "user")
+    private List<Rental> rentals;
 
     @Override
     public String toString() {
@@ -67,5 +72,13 @@ public class User {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public List<Rental> getRentals() {
+        return rentals;
+    }
+
+    public void setRentals(List<Rental> rentals) {
+        this.rentals = rentals;
     }
 }
