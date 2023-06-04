@@ -4,6 +4,14 @@
     <meta charset="UTF-8">
     <title>[[${pageTitle}]]</title>
     <link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}"/>
+    <style>
+        body {
+            background-color: #088A85;
+        }
+        *{
+            color: white;
+        }
+    </style>
 </head>
 <body>
 <div class="container-fluid text-center">
@@ -12,7 +20,7 @@
     <form th:action="@{/CarModels/save}" method="post" th:object="${car_model}"
           style="max-width: 500px; margin: 0 auto">
         <input type="hidden" th:field="*{id}">
-        <div class="border border-secondary rounded p-3">
+        <div class="rounded p-3">
             <div class="form-group row">
                 <label class="col-sm-4 col-form-label">Number</label>
                 <div class="col-sm-8">

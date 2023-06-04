@@ -4,6 +4,20 @@
     <meta charset="UTF-8">
     <title>Manage admins</title>
     <link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}"  />
+    <style>
+        body {
+            background-color: #088A85;
+        }
+        *{
+            color: white;
+        }
+        .h4{
+            color: blue;
+        }
+        .h4:hover{
+            color: darkblue;
+        }
+    </style>
 </head>
 <body>
 <div class="container-fluid text-center">
@@ -34,7 +48,7 @@
             <a class="h4" th:href="@{/admins/new}">Add New Admin</a>
         </div>
         <div class="m-2">
-            <a class="h5 text-danger" th:href="@{/}">Back</a>
+            <a class="h5 text-danger" th:href="@{/index}">Back</a>
         </div>
     </div>
 </div>

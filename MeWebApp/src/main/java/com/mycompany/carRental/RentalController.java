@@ -29,7 +29,7 @@ public class RentalController {
         model.addAttribute("pageTitle", "Add New Rental");
         return "rental_form";
     }
-    @PostMapping("/rentals/save")
+    @PostMapping("/rentals/saveRental")
     public String saveUser(Rental rental){
         service.save(rental);
         return "redirect:/rentals";

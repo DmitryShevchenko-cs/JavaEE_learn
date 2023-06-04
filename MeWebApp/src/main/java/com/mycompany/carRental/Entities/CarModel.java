@@ -47,6 +47,13 @@ public class CarModel {
                 Number;
     }
 
+    public String getInfoForUser(){
+        return car.getName() + " " +
+                car.getModel()  + " " +
+                getColor()  + " " +
+                getType();
+    }
+
     public Integer getId() {
         return id;
     }
