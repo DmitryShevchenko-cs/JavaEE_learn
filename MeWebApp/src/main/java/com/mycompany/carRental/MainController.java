@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Controller
 public class MainController {
@@ -41,16 +42,25 @@ public class MainController {
     @PostMapping("/rentals/save")
     public String saveRental(Rental rental, RedirectAttributes redirectAttributes) {
         User user = rental.getUser();
-        if (user.getId() == null) {
-            userService.save(user);
+        var user2 = userService.listAll().stream().filter(u -> u.getEmail().equals(user.getEmail())).findFirst();
+        if (user2.isPresent())
+            user.setId(user2.get().getId());
+        var cars = rentalService.listAll().stream()
+                .filter(c -> c.getCar().getInfoForUser().equals(rental.getCar().getInfoForUser())).toList();
+        if(cars.size() > 0){
+            var returnDates = cars.stream().filter(c ->
+                 c.getReturnDate().isAfter(rental.getDateOfIssue())
+            ).toList();
+            if(returnDates.size() == 0){
+                userService.save(user);
+                redirectAttributes.addFlashAttribute("successMessage", "Rental successfully added.");
+                rentalService.save(rental);
+            }
+            else {
+                redirectAttributes.addFlashAttribute("successMessage", "This car is busy at this time.");
+                return "redirect:/reservation_form";
+            }
         }
-        redirectAttributes.addFlashAttribute("successMessage", "Rental successfully added.");
-        rentalService.save(rental);
         return "redirect:/";
-    }
-    @PostMapping("/users/save")
-    public String saveUser(User user) {
-        userService.save(user);
-        return "redirect:/reservation_form";
     }
 }

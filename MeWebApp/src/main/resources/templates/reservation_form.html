@@ -23,6 +23,14 @@
     select option {
       color: black;
     }
+    .success-message {
+      background-color: #D4EDDA;
+      border-color: #C3E6CB;
+      color: #155724;
+      padding: 10px;
+      margin-bottom: 10px;
+      border-radius: 4px;
+    }
   </style>
 </head>
 <body>
@@ -78,6 +86,7 @@
     </div>
   </div>
 </form>
+<div th:if="${successMessage}" class="success-message" th:text="${successMessage}"></div>
 <script type="text/javascript">
   function cancelForm(){
     window.location="[[@{/}]]";
