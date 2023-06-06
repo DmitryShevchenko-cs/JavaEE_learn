@@ -28,7 +28,7 @@ public class UserController {
         model.addAttribute("pageTitle", "Add New User");
         return "user_form";
     }
-    @PostMapping("/users/save")
+    @PostMapping("/users/saveUser")
     public String saveUser(User user){
         service.save(user);
         return "redirect:/users";

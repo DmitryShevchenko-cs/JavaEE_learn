@@ -4,10 +4,24 @@
     <meta charset="UTF-8">
     <title>Welcome to admin panel</title>
     <link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}"/>
+    <style>
+        body {
+            background-color: #088A85;
+        }
+        .head{
+            color: white;
+        }
+        .h4{
+            color: blue;
+        }
+        .h4:hover{
+            color: darkblue;
+        }
+    </style>
 </head>
 <body>
 <div class="container-fluid text-center">
-    <h1>Welcome to admin panel</h1>
+    <h1 class="head">Welcome to admin panel</h1>
     <a class="h4" th:href="@{/users}">Users</a><br>
     <a class="h4" th:href="@{/cars}">Cars</a><br>
     <a class="h4" th:href="@{/CarModels}">Car Models</a><br>

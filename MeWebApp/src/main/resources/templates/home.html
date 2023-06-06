@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome to Car Rental Service!</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}"/>
+    <style>
+        body {
+            background-color: #088A85;
+        }
+        *{
+            color: white;
+        }
+        .create-reservation-btn {
+            background-color: #FF5733;
+            border-color: #FF5733;
+        }
+        .create-reservation-btn:hover {
+            background-color: #FF7F50;
+            border-color: #FF7F50;
+        }
+        .success-message {
+            background-color: #D4EDDA;
+            border-color: #C3E6CB;
+            color: #155724;
+            padding: 10px;
+            margin-bottom: 10px;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
+<div class="container d-flex justify-content-center align-items-center vh-100">
+    <div class="text-center">
+        <h1>Welcome to Car Rental Service!</h1>
+        <p>We offer a wide selection of rental cars at competitive prices.</p>
+        <p>Find cars of various makes, classes, and models on our platform.</p>
+        <p>Take advantage of our convenient online booking system and get a car at your preferred time.</p>
+        <a class="btn create-reservation-btn" th:href="@{/reservation_form}">Create Reservation</a>
+    </div>
+    <div th:if="${successMessage}" class="success-message" th:text="${successMessage}"></div>
+</div>
+</body>
+</html>
