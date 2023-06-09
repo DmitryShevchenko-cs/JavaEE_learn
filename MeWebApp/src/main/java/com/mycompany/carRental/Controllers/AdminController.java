@@ -1,4 +1,4 @@
-package com.mycompany.carRental;
+package com.mycompany.carRental.Controllers;
 
 import com.mycompany.carRental.Entities.Admin;
 import com.mycompany.carRental.Services.AdminService;
@@ -16,26 +16,26 @@ public class AdminController {
     @Autowired
     private AdminService service;
 
-    @GetMapping("/admins")
+    @GetMapping("/index/admins")
     public String showUserCars(Model model){
         List<Admin> listAdmins = service.listAll();
         model.addAttribute("listAdmins", listAdmins);
         return "admins";
     }
-    @GetMapping("/admins/new")
+    @GetMapping("/index/admins/new")
     public String showNewForm(Model model){
         model.addAttribute("admin", new Admin());
         model.addAttribute("pageTitle", "Add New Admin");
         return "admin_form";
     }
 
-    @PostMapping("/admins/save")
+    @PostMapping("/index/admins/save")
     public String saveCar(Admin admin){
         service.save(admin);
-        return "redirect:/admins";
+        return "redirect:/index/admins";
     }
 
-    @GetMapping("/admins/edit/{id}")
+    @GetMapping("/index/admins/edit/{id}")
     public String showEditForm(@PathVariable("id") Integer id, Model model){
 
         var admin = service.get(id);
@@ -44,9 +44,9 @@ public class AdminController {
         return "admin_form";
 
     }
-    @GetMapping("/admins/delete/{id}")
+    @GetMapping("/index/admins/delete/{id}")
     public String deleteCar(@PathVariable("id") Integer id){
         service.delete(id);
-        return "redirect:/admins";
+        return "redirect:/index/admins";
     }
 }

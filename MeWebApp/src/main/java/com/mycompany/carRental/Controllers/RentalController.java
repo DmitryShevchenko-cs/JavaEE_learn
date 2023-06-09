@@ -1,4 +1,4 @@
-package com.mycompany.carRental;
+package com.mycompany.carRental.Controllers;
 
 import com.mycompany.carRental.Entities.Rental;
 import com.mycompany.carRental.Entities.User;
@@ -17,13 +17,13 @@ import java.util.List;
 public class RentalController {
     @Autowired private RentalService service;
 
-    @GetMapping("/rentals")
+    @GetMapping("/index/rentals")
     public String showUserList(Model model){
         List<Rental> listRental = service.listAll();
         model.addAttribute("listRental", listRental);
         return "rentals";
     }
-    @GetMapping("/rentals/new")
+    @GetMapping("/index/rentals/new")
     public String showNewForm(Model model){
         model.addAttribute("rental", new Rental());
         model.addAttribute("pageTitle", "Add New Rental");
@@ -32,7 +32,7 @@ public class RentalController {
     @PostMapping("/rentals/saveRental")
     public String saveUser(Rental rental){
         service.save(rental);
-        return "redirect:/rentals";
+        return "redirect:/index/rentals";
     }
     @GetMapping("/rentals/edit/{id}")
     public String showEditForm(@PathVariable("id") Integer id, Model model){
@@ -41,9 +41,9 @@ public class RentalController {
         model.addAttribute("pageTitle", "Edit rental (ID:" + id + ")");
         return "rental_form";
     }
-    @GetMapping("/rentals/delete/{id}")
+    @GetMapping("/index/rentals/delete/{id}")
     public String deleteCar(@PathVariable("id") Integer id){
         service.delete(id);
-        return "redirect:/rentals";
+        return "redirect:/index/rentals";
     }
 }

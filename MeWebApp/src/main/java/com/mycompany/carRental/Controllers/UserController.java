@@ -1,4 +1,4 @@
-package com.mycompany.carRental;
+package com.mycompany.carRental.Controllers;
 
 import com.mycompany.carRental.Entities.User;
 import com.mycompany.carRental.Exceptions.UserNotFoundException;
@@ -16,24 +16,24 @@ import java.util.List;
 public class UserController {
     @Autowired private UserService service;
 
-    @GetMapping("/users")
+    @GetMapping("/index/users")
     public String showUserList(Model model){
         List<User> listUsers = service.listAll();
         model.addAttribute("listUsers", listUsers);
         return "users";
     }
-    @GetMapping("/users/new")
+    @GetMapping("/index/users/new")
     public String showNewForm(Model model){
         model.addAttribute("user", new User());
         model.addAttribute("pageTitle", "Add New User");
         return "user_form";
     }
-    @PostMapping("/users/saveUser")
+    @PostMapping("/index/users/saveUser")
     public String saveUser(User user){
         service.save(user);
-        return "redirect:/users";
+        return "redirect:/index/users";
     }
-    @GetMapping("/users/edit/{id}")
+    @GetMapping("/index/users/edit/{id}")
     public String showEditForm(@PathVariable("id") Integer id, Model model){
         try {
             var user = service.get(id);
@@ -42,7 +42,7 @@ public class UserController {
             return "user_form";
         }
         catch (UserNotFoundException e) {
-            return "redirect:/users";
+            return "redirect:/index/users";
         }
     }
     @GetMapping("/users/delete/{id}")

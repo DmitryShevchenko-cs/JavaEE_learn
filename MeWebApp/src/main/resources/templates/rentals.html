@@ -43,15 +43,15 @@
                     <td>[[${rent.dateOfIssue}]]</td>
                     <td>[[${rent.returnDate}]]</td>
                     <td>
-                        <a class="h4 mr-3" th:href="@{'/rentals/edit/' + ${rent.id}}">Edit</a>
-                        <a class="h4" th:href="@{'/rentals/delete/' + ${rent.id}}">Delete</a>
+                        <a class="h4 mr-3" th:href="@{'/index/rentals/edit/' + ${rent.id}}">Edit</a>
+                        <a class="h4" th:href="@{'/index/rentals/delete/' + ${rent.id}}">Delete</a>
                     </td>
                 </tr>
             </th:block>
             </tbody>
         </table>
         <div class="m-2">
-            <a class="h4" th:href="@{/rentals/new}">Add New User</a>
+            <a class="h4" th:href="@{/index/rentals/new}">Add New User</a>
         </div>
         <div class="m-2">
             <a class="h5 text-danger" th:href="@{/index}">Back</a>

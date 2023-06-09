@@ -45,15 +45,15 @@
           <td>[[${carModel.Places}]]</td>
           <td>[[${carModel.car.getNameAndModel()}]]</td>
           <td>
-            <a class="h4 mr-3" th:href="@{'/CarModels/edit/' + ${carModel.id}}">Edit</a>
-            <a class="h4" th:href="@{'/CarModels/delete/' + ${carModel.id}}">Delete</a>
+            <a class="h4 mr-3" th:href="@{'/index/CarModels/edit/' + ${carModel.id}}">Edit</a>
+            <a class="h4" th:href="@{'/index/CarModels/delete/' + ${carModel.id}}">Delete</a>
           </td>
         </tr>
       </th:block>
       </tbody>
     </table>
     <div class="m-2">
-      <a class="h4" th:href="@{/CarModels/new}">Add New car model</a>
+      <a class="h4" th:href="@{/index/CarModels/new}">Add New car model</a>
     </div>
     <div class="m-2">
       <a class="h5 text-danger" th:href="@{/index}">Back</a>

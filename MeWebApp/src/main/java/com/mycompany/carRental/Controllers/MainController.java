@@ -1,4 +1,4 @@
-package com.mycompany.carRental;
+package com.mycompany.carRental.Controllers;
 
 import com.mycompany.carRental.Entities.CarModel;
 import com.mycompany.carRental.Entities.Rental;

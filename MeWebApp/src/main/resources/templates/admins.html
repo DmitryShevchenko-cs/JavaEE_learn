@@ -37,15 +37,15 @@
                     <td>[[${admin.id}]]</td>
                     <td>[[${admin.login}]]</td>
                     <td>
-                        <a class="h4 mr-3" th:href="@{'/admins/edit/' + ${admin.id}}">Edit</a>
-                        <a class="h4" th:href="@{'/admins/delete/' + ${admin.id}}">Delete</a>
+                        <a class="h4 mr-3" th:href="@{'/index/admins/edit/' + ${admin.id}}">Edit</a>
+                        <a class="h4" th:href="@{'/index/admins/delete/' + ${admin.id}}">Delete</a>
                     </td>
                 </tr>
             </th:block>
             </tbody>
         </table>
         <div class="m-2">
-            <a class="h4" th:href="@{/admins/new}">Add New Admin</a>
+            <a class="h4" th:href="@{/index/admins/new}">Add New Admin</a>
         </div>
         <div class="m-2">
             <a class="h5 text-danger" th:href="@{/index}">Back</a>

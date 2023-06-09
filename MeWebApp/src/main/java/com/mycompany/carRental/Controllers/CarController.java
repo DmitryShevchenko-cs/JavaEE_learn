@@ -1,4 +1,4 @@
-package com.mycompany.carRental;
+package com.mycompany.carRental.Controllers;
 
 import com.mycompany.carRental.Entities.Car;
 import com.mycompany.carRental.Services.CarService;
@@ -14,26 +14,26 @@ import java.util.List;
 @Controller
 public class CarController {
     @Autowired private CarService service;
-    @GetMapping("/cars")
+    @GetMapping("/index/cars")
     public String showUserCars(Model model){
         List<Car> listCars = service.listAll();
         model.addAttribute("listCars", listCars);
         return "cars";
     }
-    @GetMapping("/cars/new")
+    @GetMapping("/index/cars/new")
     public String showNewForm(Model model){
         model.addAttribute("car", new Car());
         model.addAttribute("pageTitle", "Add New Car");
         return "car_form";
     }
 
-    @PostMapping("/cars/save")
+    @PostMapping("/index/cars/save")
     public String saveCar(Car car){
         service.save(car);
-        return "redirect:/cars";
+        return "redirect:/index/cars";
     }
 
-    @GetMapping("/cars/edit/{id}")
+    @GetMapping("/index/cars/edit/{id}")
     public String showEditForm(@PathVariable("id") Integer id, Model model){
 
         var car = service.get(id);
@@ -42,10 +42,10 @@ public class CarController {
         return "car_form";
 
     }
-    @GetMapping("/cars/delete/{id}")
+    @GetMapping("/index/cars/delete/{id}")
     public String deleteCar(@PathVariable("id") Integer id){
         service.delete(id);
-        return "redirect:/cars";
+        return "redirect:/index/cars";
     }
 
 }

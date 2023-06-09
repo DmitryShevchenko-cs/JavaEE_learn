@@ -1,4 +1,4 @@
-package com.mycompany.carRental;
+package com.mycompany.carRental.Controllers;
 
 import com.mycompany.carRental.Entities.CarModel;
 import com.mycompany.carRental.Services.CarModelService;
@@ -15,27 +15,27 @@ import java.util.List;
 public class CarModelController {
     @Autowired private CarModelService service;
 
-    @GetMapping("/CarModels")
+    @GetMapping("/index/CarModels")
     public String showUserList(Model model){
         List<CarModel> listCarModels = service.listAll();
         model.addAttribute("listCarModels", listCarModels);
         return "CarModels";
     }
 
-    @GetMapping("/CarModels/new")
+    @GetMapping("/index/CarModels/new")
     public String showNewForm(Model model){
         model.addAttribute("car_model", new CarModel());
         model.addAttribute("pageTitle", "Add New Car Model");
         return "CarModel_form";
     }
 
-    @PostMapping("/CarModels/save")
+    @PostMapping("/index/CarModels/save")
     public String saveCar(CarModel carModel){
         service.save(carModel);
-        return "redirect:/CarModels";
+        return "redirect:/index/CarModels";
     }
 
-    @GetMapping("/CarModels/edit/{id}")
+    @GetMapping("/index/CarModels/edit/{id}")
     public String showEditForm(@PathVariable("id") Integer id, Model model){
 
         var carModel = service.get(id);
@@ -44,9 +44,9 @@ public class CarModelController {
         return "CarModel_form";
 
     }
-    @GetMapping("/CarModels/delete/{id}")
+    @GetMapping("/index/CarModels/delete/{id}")
     public String deleteCar(@PathVariable("id") Integer id){
         service.delete(id);
-        return "redirect:/CarModels";
+        return "redirect:/index/CarModels";
     }
 }
